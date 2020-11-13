@@ -1,4 +1,6 @@
-<?php namespace BookStack\Uploads;
+<?php
+
+namespace BookStack\Uploads;
 
 use BookStack\Auth\User;
 use BookStack\Exceptions\HttpFetchException;
@@ -407,11 +409,11 @@ class ImageService extends UploadService
                 foreach ($images as $image) {
                     $searchQuery = '%' . basename($image->path) . '%';
                     $inPage = DB::table('pages')
-                         ->where('html', 'like', $searchQuery)->count() > 0;
+                        ->where('html', 'like', $searchQuery)->count() > 0;
                     $inRevision = false;
                     if ($checkRevisions) {
                         $inRevision =  DB::table('page_revisions')
-                             ->where('html', 'like', $searchQuery)->count() > 0;
+                            ->where('html', 'like', $searchQuery)->count() > 0;
                     }
 
                     if (!$inPage && !$inRevision) {
@@ -485,11 +487,7 @@ class ImageService extends UploadService
             // region-based url will be used to prevent http issues.
             if ($storageUrl == false && config('filesystems.images') === 's3') {
                 $storageDetails = config('filesystems.disks.s3');
-                if (strpos($storageDetails['bucket'], '.') === false) {
-                    $storageUrl = 'https://' . $storageDetails['bucket'] . '.s3.amazonaws.com';
-                } else {
-                    $storageUrl = 'https://s3-' . $storageDetails['region'] . '.amazonaws.com/' . $storageDetails['bucket'];
-                }
+                $storageUrl = 'https://' . $storageDetails['bucket'] . '.' . $storageDetails['region'] . '.cdn.digitaloceanspaces.com';
             }
             $this->storageUrl = $storageUrl;
         }
