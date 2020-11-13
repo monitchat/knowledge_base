@@ -20,15 +20,6 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->nullableTimestamps();
         });
-
-        // Create the initial admin user
-        DB::table('users')->insert([
-            'name' => 'Admin',
-            'email' => 'admin@admin.com',
-            'password' => bcrypt('password'),
-            'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
-            'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
-        ]);
     }
 
     /**

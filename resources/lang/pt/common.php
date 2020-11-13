@@ -1,45 +1,46 @@
 <?php
+
 /**
  * Common elements found throughout many areas of BookStack.
  */
 return [
 
     // Buttons
-    'cancel' => 'Cancel',
-    'confirm' => 'Confirm',
-    'back' => 'Back',
-    'save' => 'Save',
-    'continue' => 'Continue',
-    'select' => 'Select',
-    'toggle_all' => 'Toggle All',
-    'more' => 'More',
+    'cancel' => 'Cancelar',
+    'confirm' => 'Confirmar',
+    'back' => 'Voltar',
+    'save' => 'Salvar',
+    'continue' => 'Continuar',
+    'select' => 'Selecionar',
+    'toggle_all' => 'Marcard Todos',
+    'more' => 'Mais',
 
     // Form Labels
-    'name' => 'Name',
-    'description' => 'Description',
-    'role' => 'Role',
-    'cover_image' => 'Cover image',
-    'cover_image_description' => 'This image should be approx 440x250px.',
-    
+    'name' => 'Nome',
+    'description' => 'Descrição',
+    'role' => 'Pefil',
+    'cover_image' => 'Imagem de Capa',
+    'cover_image_description' => 'Esta imagem deve ser aproximadamente 440x250px.',
+
     // Actions
-    'actions' => 'Actions',
-    'view' => 'View',
-    'view_all' => 'View All',
-    'create' => 'Create',
-    'update' => 'Update',
-    'edit' => 'Edit',
-    'sort' => 'Sort',
-    'move' => 'Move',
-    'copy' => 'Copy',
-    'reply' => 'Reply',
-    'delete' => 'Delete',
+    'actions' => 'Ações',
+    'view' => 'Visualizar',
+    'view_all' => 'Visualizar Todos',
+    'create' => 'Novo',
+    'update' => 'Atualizar',
+    'edit' => 'Editar',
+    'sort' => 'Ordenar',
+    'move' => 'Mover',
+    'copy' => 'Copiar',
+    'reply' => 'Responder',
+    'delete' => 'Deletar',
     'delete_confirm' => 'Confirm Deletion',
-    'search' => 'Search',
-    'search_clear' => 'Clear Search',
+    'search' => 'Pesquisa',
+    'search_clear' => 'Limpar Pesquisa',
     'reset' => 'Reset',
-    'remove' => 'Remove',
-    'add' => 'Add',
-    'fullscreen' => 'Fullscreen',
+    'remove' => 'Remover',
+    'add' => 'Adicionar',
+    'fullscreen' => 'Tela Cheia',
 
     // Sort Options
     'sort_options' => 'Sort Options',
@@ -55,9 +56,9 @@ return [
     'no_activity' => 'No activity to show',
     'no_items' => 'No items available',
     'back_to_top' => 'Back to top',
-    'toggle_details' => 'Toggle Details',
+    'toggle_details' => 'Alternar Detalhes',
     'toggle_thumbnails' => 'Toggle Thumbnails',
-    'details' => 'Details',
+    'details' => 'Detailhes',
     'grid_view' => 'Grid View',
     'list_view' => 'List View',
     'default' => 'Default',
@@ -76,5 +77,5 @@ return [
 
     // Email Content
     'email_action_help' => 'If you’re having trouble clicking the ":actionText" button, copy and paste the URL below into your web browser:',
-    'email_rights' => 'All rights reserved',
+    'email_rights' => 'Todos os Direitos Reservados',
 ];
