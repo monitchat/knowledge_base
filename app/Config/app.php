@@ -49,16 +49,16 @@ return [
     'timezone' => env('APP_TIMEZONE', 'UTC'),
 
     // Default locale to use
-    'locale' => env('APP_LANG', 'en'),
+    'locale' => env('APP_LANG', 'pt_BR'),
 
     // Locales available
     'locales' => ['en', 'ar', 'bg', 'cs', 'da', 'de', 'de_informal', 'es', 'es_AR', 'fa', 'fr', 'he', 'hu', 'it', 'ja', 'ko', 'nl', 'pt', 'pt_BR', 'sk', 'sl', 'sv', 'pl',  'ru', 'th', 'tr', 'uk', 'vi', 'zh_CN', 'zh_TW',],
 
     //  Application Fallback Locale
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'pt_BR',
 
     // Faker Locale
-    'faker_locale' => 'en_GB',
+    'faker_locale' => 'pt_BR',
 
     // Enable right-to-left text control.
     'rtl' => false,
