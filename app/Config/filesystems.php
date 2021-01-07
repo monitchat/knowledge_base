@@ -58,7 +58,15 @@ return [
             'endpoint' => env('STORAGE_S3_ENDPOINT', null),
             'use_path_style_endpoint' => env('STORAGE_S3_ENDPOINT', null) !== null,
         ],
-
+	'backup' => [
+            'driver' => 's3',
+            'key' => env('STORAGE_S3_KEY'),
+            'secret' => env('STORAGE_S3_SECRET'),
+            'endpoint' => env('STORAGE_S3_ENDPOINT'),
+            'region' => env('STORAGE_S3_REGION'),
+            'bucket' => env('STORAGE_S3_BUCKET', 'monitchat'),
+            'root' => 'backup',
+        ],
         'rackspace' => [
             'driver'    => 'rackspace',
             'username'  => 'your-username',
