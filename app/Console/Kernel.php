@@ -1,6 +1,8 @@
 <?php namespace BookStack\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
@@ -22,7 +24,14 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        //
+         $schedule->call(function () {
+         	Artisan::call('backup:clean');
+	 })->hourly();;
+
+	 $schedule->call(function () {
+		Log::info('backup');
+         	Artisan::call('backup:run');
+       	 })->hourly();
     }
 
     /**
