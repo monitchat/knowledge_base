@@ -1,7 +1,7 @@
 <?php namespace Tests\Entity;
 
-use BookStack\Entities\Managers\PageContent;
-use BookStack\Entities\Page;
+use BookStack\Entities\Tools\PageContent;
+use BookStack\Entities\Models\Page;
 use Tests\TestCase;
 
 class PageContentTest extends TestCase
@@ -419,5 +419,64 @@ class PageContentTest extends TestCase
 
         $page->refresh();
         $this->assertEquals('"Hello & welcome"', $page->text);
+    }
+
+    public function test_page_markdown_table_rendering()
+    {
+        $this->asEditor();
+        $page = Page::query()->first();
+
+        $content = '| Syntax      | Description |
+| ----------- | ----------- |
+| Header      | Title       |
+| Paragraph   | Text        |';
+        $this->put($page->getUrl(), [
+            'name' => $page->name,  'markdown' => $content,
+            'html' => '', 'summary' => ''
+        ]);
+
+        $page->refresh();
+        $this->assertStringContainsString('</tbody>', $page->html);
+
+        $pageView = $this->get($page->getUrl());
+        $pageView->assertElementExists('.page-content table tbody td');
+    }
+
+    public function test_page_markdown_task_list_rendering()
+    {
+        $this->asEditor();
+        $page = Page::query()->first();
+
+        $content = '- [ ] Item a
+- [x] Item b';
+        $this->put($page->getUrl(), [
+            'name' => $page->name,  'markdown' => $content,
+            'html' => '', 'summary' => ''
+        ]);
+
+        $page->refresh();
+        $this->assertStringContainsString('input', $page->html);
+        $this->assertStringContainsString('type="checkbox"', $page->html);
+
+        $pageView = $this->get($page->getUrl());
+        $pageView->assertElementExists('.page-content input[type=checkbox]');
+    }
+
+    public function test_page_markdown_strikethrough_rendering()
+    {
+        $this->asEditor();
+        $page = Page::query()->first();
+
+        $content = '~~some crossed out text~~';
+        $this->put($page->getUrl(), [
+            'name' => $page->name,  'markdown' => $content,
+            'html' => '', 'summary' => ''
+        ]);
+
+        $page->refresh();
+        $this->assertStringMatchesFormat('%A<s%A>some crossed out text</s>%A', $page->html);
+
+        $pageView = $this->get($page->getUrl());
+        $pageView->assertElementExists('.page-content p > s');
     }
 }

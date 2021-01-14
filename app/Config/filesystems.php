@@ -42,13 +42,6 @@ return [
             'root'   => storage_path(),
         ],
 
-        'ftp' => [
-            'driver'   => 'ftp',
-            'host'     => 'ftp.example.com',
-            'username' => 'your-username',
-            'password' => 'your-password',
-        ],
-
         's3' => [
             'driver' => 's3',
             'key'    => env('STORAGE_S3_KEY', 'your-key'),
@@ -58,7 +51,7 @@ return [
             'endpoint' => env('STORAGE_S3_ENDPOINT', null),
             'use_path_style_endpoint' => env('STORAGE_S3_ENDPOINT', null) !== null,
         ],
-	'backup' => [
+        'backup' => [
             'driver' => 's3',
             'key' => env('STORAGE_S3_KEY'),
             'secret' => env('STORAGE_S3_SECRET'),
