@@ -5,54 +5,26 @@ use Spatie\DbDumper\Compressors\GzipCompressor;
 return [
 
     'backup' => [
-
-        /*
-         * The name of this application. You can use this name to monitor
-         * the backups.
-         */
         'name' => env('BACKUP_NAME', 'knowledge_base'),
-
         'source' => [
 
             'files' => [
-
-                /*
-                 * The list of directories and files that will be included in the backup.
-                 */
                 'include' => [
-                    base_path(),
                 ],
-
-                /*
-                 * These directories and files will be excluded from the backup.
-                 *
-                 * Directories used by the backup process will automatically be excluded.
-                 */
                 'exclude' => [
                     base_path('vendor'),
                     base_path('node_modules'),
                 ],
-
-                /*
-                 * Determines if symlinks should be followed.
-                 */
                 'follow_links' => false,
-
-                /*
-                 * Determines if it should avoid unreadable folders.
-                 */
                 'ignore_unreadable_directories' => false,
             ],
-
             'databases' => [
                 'mysql',
             ],
         ],
 
         'database_dump_compressor' => GzipCompressor::class,
-
         'destination' => [
-
             'filename_prefix' => env('BACKUP_NAME', 'knowledge_base') . '-',
             'disks' => [
                 'backup',
@@ -60,16 +32,7 @@ return [
         ],
         'temporary_directory' => storage_path('app/backup-temp'),
     ],
-
-    /*
-     * You can get notified when specific events occur. Out of the box you can use 'mail' and 'slack'.
-     * For Slack you need to install guzzlehttp/guzzle and laravel/slack-notification-channel.
-     *
-     * You can also use your own notification classes, just make sure the class is named after one of
-     * the `Spatie\Backup\Events` classes.
-     */
     'notifications' => [
-
         'notifications' => [
             \Spatie\Backup\Notifications\Notifications\BackupHasFailed::class => ['mail'],
             \Spatie\Backup\Notifications\Notifications\UnhealthyBackupWasFound::class => ['mail'],
@@ -79,26 +42,13 @@ return [
             \Spatie\Backup\Notifications\Notifications\CleanupWasSuccessful::class => ['mail'],
         ],
 
-        /*
-         * Here you can specify the notifiable to which the notifications should be sent. The default
-         * notifiable will use the variables specified in this config file.
-         */
         'notifiable' => \Spatie\Backup\Notifications\Notifiable::class,
-
         'mail' => [],
-
         'slack' => [
             'webhook_url' => '',
-
-            /*
-             * If this is set to null the default channel of the webhook will be used.
-             */
             'channel' => null,
-
             'username' => null,
-
             'icon' => null,
-
         ],
     ],
 
